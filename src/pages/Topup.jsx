@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addBalance } from '../features/balanceSlice';
 import { useDisclosure } from '@mantine/hooks';
 
+import logo from '../assets/images/Logo.png';
+
 const Topup = () => {
     const [opened, { open, close }] = useDisclosure(false);
     const dispatch = useDispatch();
@@ -26,13 +28,14 @@ const Topup = () => {
         <Layout>
             <Modal opened={opened} onClose={close} centered>
                 <Center>
-                    <Image style={{}} src='../public/images/logo.png' alt='Top Up' width={55} />
+                    <Image src={logo} alt='Top Up' width={55} />
                 </Center>
                 <Text fw={500} fz={18} align='center' mt={20}>
                     Anda yakin ingin Top Up sebesar
                 </Text>
                 <Text fw={700} align='center' fz={24}>
-                    Rp{value ? value : 0} ?
+                    Rp
+                    {value.toLocaleString('ID')}?
                 </Text>
                 <Center mt={20}>
                     <Button variant='subtle' color='red' onClick={() => handleTopup()}>

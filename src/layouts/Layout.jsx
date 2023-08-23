@@ -2,6 +2,8 @@
 import { AppShell, Container, Flex, Header, Image, Text } from '@mantine/core';
 import { Link, useLocation } from 'react-router-dom';
 
+import logo from '../assets/images/Logo.png';
+
 const Layout = ({ children }) => {
     const location = useLocation();
 
@@ -13,7 +15,7 @@ const Layout = ({ children }) => {
                     <Container size={'xl'}>
                         <Flex>
                             <Link style={{ display: 'flex', textDecoration: 'none' }} to='/dashboard' align={'center'}>
-                                <Image mx={7} src='../public/images/logo.png' alt='Logo' width={20} />
+                                <Image mx={7} src={logo} alt='Logo' width={20} />
                                 <Text fz={12} fw={600}>
                                     SIMS PPOB
                                 </Text>
