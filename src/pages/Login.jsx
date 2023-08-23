@@ -2,7 +2,7 @@ import { Box, Button, Image, PasswordInput, Text, TextInput, Title } from '@mant
 import { useForm } from '@mantine/form';
 import { IconAt, IconLock } from '@tabler/icons-react';
 import LandingPage from '../layouts/LandingPage';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios';
 import { notifications } from '@mantine/notifications';
@@ -18,10 +18,17 @@ const Login = () => {
             password: (value) => (value.length < 1 ? 'Password harus diisi' : null),
         },
     });
+    const navigate = useNavigate();
+
     const handleSubmit = async (value) => {
         setLoading(true);
         try {
-            await axios.post('https://take-home-test-api.nutech-integrasi.app/login', value);
+            await axios.post('https://take-home-test-api.nutech-integrasi.app/login', value).then((res) => {
+                if (res.data.status == 0) {
+                    localStorage.setItem('token', res.data.data.token);
+                    navigate('/dashboard');
+                }
+            });
         } catch (error) {
             notifications.show({
                 title: `Error!`,

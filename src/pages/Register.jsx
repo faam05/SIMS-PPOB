@@ -73,7 +73,7 @@ const Register = () => {
                 </form>
                 <Text fz='xs' mt={30} ta={'center'}>
                     sudah punya akun? login{' '}
-                    <Link to={'/registration'} style={{ textDecoration: 'none', color: 'red' }}>
+                    <Link to={'/login'} style={{ textDecoration: 'none', color: 'red' }}>
                         di sini
                     </Link>
                 </Text>

@@ -1,22 +1,22 @@
+import Dashboard from '../pages/Dashboard';
+import Topup from '../pages/Topup';
+import Transaksi from '../pages/Transaksi';
+
 const PrivateRoutes = [
     {
+        path: '/dashboard',
+        element: <Dashboard />,
+    },
+    {
+        path: '/topup',
+        element: <Topup />,
+    },
+    {
+        path: '/transaksi',
+        element: <Transaksi />,
+    },
+    {
         path: '/profile',
-        element: <h2>AAA</h2>,
-    },
-    {
-        path: '/profile/image',
-        element: <h2>AAA</h2>,
-    },
-    {
-        path: '/balance',
-        element: <h2>AAA</h2>,
-    },
-    {
-        path: '/services',
-        element: <h2>AAA</h2>,
-    },
-    {
-        path: '/banner',
         element: <h2>AAA</h2>,
     },
     {

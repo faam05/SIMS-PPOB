@@ -1,7 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit';
+import profileReducer from '../features/profileSlice';
+import balanceReducer from '../features/balanceSlice';
+import servicesReducer from '../features/servicesSlice';
+import bannerReducer from '../features/bannerSlice';
 
 const store = configureStore({
-    reducer: {},
+    reducer: {
+        profile: profileReducer,
+        balance: balanceReducer,
+        services: servicesReducer,
+        banners: bannerReducer,
+    },
 });
 
 export default store;
