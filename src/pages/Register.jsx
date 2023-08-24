@@ -8,6 +8,7 @@ import axios from 'axios';
 import { notifications } from '@mantine/notifications';
 
 import logo from '../assets/images/Logo.png';
+import { useMediaQuery } from '@mantine/hooks';
 
 const Register = () => {
     const navigate = useNavigate();
@@ -52,34 +53,93 @@ const Register = () => {
         }
     };
 
+    const matches = useMediaQuery('(min-width: 768px)');
+
     return (
         <LandingPage>
-            <Box maw={350} mx='auto'>
-                <Text style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} my={20}>
-                    <Image mx={7} src={logo} alt='Logo' width={25} />
-                    <Title order={3}>SIMS PPOB</Title>
-                </Text>
-                <Title order={3} my={50} align='center'>
-                    Lengkapi data untuk <br />
-                    membuat akun
-                </Title>
-                <form onSubmit={form.onSubmit((values) => handleSubmit(values))}>
-                    <TextInput icon={<IconAt />} placeholder='masukan email anda' {...form.getInputProps('email')} />
-                    <TextInput icon={<IconUser />} mt='lg' placeholder='nama depan' {...form.getInputProps('first_name')} />
-                    <TextInput icon={<IconUser />} mt='lg' placeholder='nama belakang' {...form.getInputProps('last_name')} />
-                    <PasswordInput icon={<IconLock />} mt='lg' placeholder='buat password' {...form.getInputProps('password')} />
-                    <PasswordInput icon={<IconLock />} mt='lg' placeholder='konfirmasi password' {...form.getInputProps('konfirmasiPassword')} />
-                    <Button fullWidth type='submit' color='red' mt={50} disabled={loading ? true : false}>
-                        Registrasi
-                    </Button>
-                </form>
-                <Text fz='xs' mt={30} ta={'center'}>
-                    sudah punya akun? login{' '}
-                    <Link to={'/login'} style={{ textDecoration: 'none', color: 'red' }}>
-                        di sini
-                    </Link>
-                </Text>
-            </Box>
+            {matches ? (
+                <Box maw={350} mx='auto'>
+                    <Text style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} my={20}>
+                        <Image mx={7} src={logo} alt='Logo' width={25} />
+                        <Title order={3}>SIMS PPOB</Title>
+                    </Text>
+                    <Title order={3} my={50} align='center'>
+                        Lengkapi data untuk <br />
+                        membuat akun
+                    </Title>
+                    <form onSubmit={form.onSubmit((values) => handleSubmit(values))}>
+                        <TextInput icon={<IconAt />} placeholder='masukan email anda' {...form.getInputProps('email')} />
+                        <TextInput icon={<IconUser />} mt='lg' placeholder='nama depan' {...form.getInputProps('first_name')} />
+                        <TextInput icon={<IconUser />} mt='lg' placeholder='nama belakang' {...form.getInputProps('last_name')} />
+                        <PasswordInput icon={<IconLock />} mt='lg' placeholder='buat password' {...form.getInputProps('password')} />
+                        <PasswordInput icon={<IconLock />} mt='lg' placeholder='konfirmasi password' {...form.getInputProps('konfirmasiPassword')} />
+                        <Button fullWidth type='submit' color='red' mt={50} disabled={loading ? true : false}>
+                            Registrasi
+                        </Button>
+                    </form>
+                    <Text fz='xs' mt={30} ta={'center'}>
+                        sudah punya akun? login{' '}
+                        <Link to={'/login'} style={{ textDecoration: 'none', color: 'red' }}>
+                            di sini
+                        </Link>
+                    </Text>
+                </Box>
+            ) : (
+                <Box maw={200} mx='auto'>
+                    <Text color='black' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} my={10}>
+                        <Image mx={7} src={logo} alt='Logo' width={20} />
+                        <Title order={5}>SIMS PPOB</Title>
+                    </Text>
+                    <Title color='black' order={6} my={30} align='center'>
+                        Lengkapi data untuk <br />
+                        membuat akun
+                    </Title>
+                    <form onSubmit={form.onSubmit((values) => handleSubmit(values))}>
+                        <TextInput size='xs' iconWidth={15} icon={<IconAt />} placeholder='masukan email anda' {...form.getInputProps('email')} />
+                        <TextInput
+                            size='xs'
+                            iconWidth={15}
+                            icon={<IconUser />}
+                            mt='sm'
+                            placeholder='nama depan'
+                            {...form.getInputProps('first_name')}
+                        />
+                        <TextInput
+                            size='xs'
+                            iconWidth={15}
+                            icon={<IconUser />}
+                            mt='sm'
+                            placeholder='nama belakang'
+                            {...form.getInputProps('last_name')}
+                        />
+                        <PasswordInput
+                            size='xs'
+                            iconWidth={15}
+                            icon={<IconLock />}
+                            mt='sm'
+                            placeholder='buat password'
+                            {...form.getInputProps('password')}
+                        />
+                        <PasswordInput
+                            size='xs'
+                            iconWidth={15}
+                            icon={<IconLock />}
+                            mt='sm'
+                            placeholder='konfirmasi password'
+                            {...form.getInputProps('konfirmasiPassword')}
+                        />
+                        <Button size='xs' fullWidth type='submit' color='red' mt={30} disabled={loading ? true : false}>
+                            Registrasi
+                        </Button>
+                    </form>
+                    <Text color='black' fz='xs' mt={20} ta={'center'}>
+                        sudah punya akun? login{' '}
+                        <Link to={'/login'} style={{ textDecoration: 'none', color: 'red' }}>
+                            di sini
+                        </Link>
+                    </Text>
+                </Box>
+            )}
         </LandingPage>
     );
 };
