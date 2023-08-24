@@ -57,6 +57,7 @@ const balanceSlice = createSlice({
     extraReducers: {
         [getBalance.fulfilled]: (state, action) => {
             state.balance = action.payload.balance;
+            state.transaksi = null;
         },
         [getBalance.rejected]: (state) => {
             state.balance = 0;
@@ -64,6 +65,7 @@ const balanceSlice = createSlice({
         [addBalance.fulfilled]: (state, action) => {
             state.balance = action.payload.balance;
             state.status = 'success';
+            state.transaksi = null;
         },
         [addBalance.rejected]: (state) => {
             state.balance;
@@ -72,6 +74,7 @@ const balanceSlice = createSlice({
         [saveTransaksi.fulfilled]: (state, action) => {
             state.balance = state.balance - action.payload.total_amount;
             state.status = 'success';
+            state.transaksi = null;
         },
         [saveTransaksi.rejected]: (state) => {
             state.balance;

@@ -1,6 +1,6 @@
 import { ActionIcon, Box, Card, Flex, Image, Text } from '@mantine/core';
 import { useEffect, useState } from 'react';
-import { getProfile } from '../features/profileSlice';
+import { cekSaldo, getProfile } from '../features/profileSlice';
 import { getBalance } from '../features/balanceSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -10,7 +10,6 @@ import { IconEye } from '@tabler/icons-react';
 
 const Detail = () => {
     const [image, setImage] = useState(profilePhoto);
-    const [hide, setHide] = useState(profilePhoto);
     const dispatch = useDispatch();
     const dataProfile = useSelector((state) => state.profile);
     const dataBalance = useSelector((state) => state.balance);
@@ -47,7 +46,7 @@ const Detail = () => {
                     <Text style={{ display: 'flex' }} mt={10} color='white' fz={25} fw={700} align='center'>
                         Rp
                         <input
-                            type={hide ? 'password' : 'text'}
+                            type={!dataProfile.hide ? 'password' : 'text'}
                             disabled
                             value={dataBalance.balance.toLocaleString('ID')}
                             style={{
@@ -64,7 +63,7 @@ const Detail = () => {
                         <Text color='white' fz={10} mr={5}>
                             Lihat Saldo
                         </Text>
-                        <ActionIcon variant='transparent' onClick={() => setHide(!hide)}>
+                        <ActionIcon variant='transparent' onClick={() => dispatch(cekSaldo())}>
                             <IconEye size={14} color='white' />
                         </ActionIcon>
                     </Flex>

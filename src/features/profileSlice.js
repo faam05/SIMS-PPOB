@@ -34,11 +34,17 @@ const initialState = {
     last_name: '',
     profile_image: '',
     auth: '',
+    hide: false,
 };
 
 const profileSlice = createSlice({
     name: 'profile',
     initialState,
+    reducers: {
+        cekSaldo: (state) => {
+            state.hide = !state.hide;
+        },
+    },
     extraReducers: {
         [getProfile.fulfilled]: (state, action) => {
             state.email = action.payload.email;
@@ -69,13 +75,11 @@ const profileSlice = createSlice({
             state.auth = false;
         },
         [updatePhotoProfile.fulfilled]: (state, action) => {
-            // state.email = action.payload.email;
-            // state.first_name = action.payload.first_name;
-            // state.last_name = action.payload.last_name;
             state.profile_image = action.payload.profile_image;
             state.auth = true;
         },
     },
 });
 
+export const { cekSaldo } = profileSlice.actions;
 export default profileSlice.reducer;
