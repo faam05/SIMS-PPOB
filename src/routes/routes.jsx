@@ -1,4 +1,6 @@
 import Dashboard from '../pages/Dashboard';
+import Pembayaran from '../pages/Pembayaran';
+import Profile from '../pages/Profile';
 import Topup from '../pages/Topup';
 import Transaksi from '../pages/Transaksi';
 
@@ -17,11 +19,11 @@ const PrivateRoutes = [
     },
     {
         path: '/profile',
-        element: <h2>AAA</h2>,
+        element: <Profile />,
     },
     {
-        path: '/history',
-        element: <h2>AAA</h2>,
+        path: '/transaksi/:service_code',
+        element: <Pembayaran />,
     },
 ];
 

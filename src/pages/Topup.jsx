@@ -1,13 +1,14 @@
 import { Box, Button, Center, Grid, Image, Modal, NumberInput, Text } from '@mantine/core';
-import DetailShow from '../components/DetailShow';
 import Layout from '../layouts/Layout';
 import { IconDialpad } from '@tabler/icons-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addBalance } from '../features/balanceSlice';
+import { addBalance, getBalance } from '../features/balanceSlice';
 import { useDisclosure } from '@mantine/hooks';
 
 import logo from '../assets/images/Logo.png';
+import { notifications } from '@mantine/notifications';
+import Detail from '../components/Detail';
 
 const Topup = () => {
     const [opened, { open, close }] = useDisclosure(false);
@@ -16,12 +17,34 @@ const Topup = () => {
     const [value, setValue] = useState('');
     const [loading, setLoading] = useState(false);
 
+    useEffect(() => {
+        dispatch(getBalance());
+    }, [dispatch]);
+
     const handleTopup = async () => {
         close();
         setLoading(true);
         await dispatch(addBalance(value));
-        setValue('');
+        if (dataBalance.status == 'failed') {
+            notifications.show({
+                title: `Gagal!`,
+                message: `Top Up sebesar Rp${value.toLocaleString('ID')} gagal dilakukan`,
+                color: 'red',
+                autoClose: 5000,
+            });
+            setLoading(false);
+            return;
+        } else if (dataBalance.status == 'success') {
+            notifications.show({
+                title: `Top Up berhasil!`,
+                message: `Top Up sebesar Rp${value.toLocaleString('ID')} berhasil dilakukan`,
+                color: 'green',
+                autoClose: 5000,
+                position: 'top-center',
+            });
+        }
         setLoading(false);
+        setValue('');
     };
 
     return (
@@ -48,7 +71,7 @@ const Topup = () => {
                     </Button>
                 </Center>
             </Modal>
-            <DetailShow />
+            <Detail />
             <Text fz={18} mt={50} fw={450}>
                 Silahkan masukan
             </Text>
@@ -60,6 +83,7 @@ const Topup = () => {
                     <Grid.Col span={8}>
                         <NumberInput
                             value={value}
+                            thousandsSeparator='.'
                             onChange={(value) => setValue(value)}
                             hideControls
                             placeholder='masukan nominal Top Up'
@@ -86,7 +110,29 @@ const Topup = () => {
                         </Button>
                     </Grid.Col>
                     <Grid.Col span={8}>
-                        <Button color='red' fullWidth disabled={loading ? true : false} onClick={open}>
+                        <Button
+                            color='red'
+                            fullWidth
+                            disabled={!loading ? (value == '' ? true : false) : true}
+                            onClick={() => {
+                                if (value < 10000) {
+                                    notifications.show({
+                                        title: `Error!`,
+                                        message: `Nominal Top Up minimal Rp10.000`,
+                                        color: 'red',
+                                        autoClose: 5000,
+                                    });
+                                } else if (value > 1000000) {
+                                    notifications.show({
+                                        title: `Error!`,
+                                        message: `Nominal Top Up maksimal Rp1.000.000`,
+                                        color: 'red',
+                                        autoClose: 5000,
+                                    });
+                                } else {
+                                    open();
+                                }
+                            }}>
                             Top Up
                         </Button>
                     </Grid.Col>

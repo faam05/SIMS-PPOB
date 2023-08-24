@@ -16,7 +16,7 @@ const Layout = ({ children }) => {
                         <Flex>
                             <Link style={{ display: 'flex', textDecoration: 'none' }} to='/dashboard' align={'center'}>
                                 <Image mx={7} src={logo} alt='Logo' width={20} />
-                                <Text fz={12} fw={600}>
+                                <Text fz={12} fw={600} color='black'>
                                     SIMS PPOB
                                 </Text>
                             </Link>

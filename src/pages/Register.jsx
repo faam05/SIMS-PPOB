@@ -7,6 +7,8 @@ import { useState } from 'react';
 import axios from 'axios';
 import { notifications } from '@mantine/notifications';
 
+import logo from '../assets/images/Logo.png';
+
 const Register = () => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
@@ -54,7 +56,7 @@ const Register = () => {
         <LandingPage>
             <Box maw={350} mx='auto'>
                 <Text style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} my={20}>
-                    <Image mx={7} src='../public/images/logo.png' alt='Logo' width={25} />
+                    <Image mx={7} src={logo} alt='Logo' width={25} />
                     <Title order={3}>SIMS PPOB</Title>
                 </Text>
                 <Title order={3} my={50} align='center'>

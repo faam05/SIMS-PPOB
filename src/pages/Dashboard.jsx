@@ -5,7 +5,8 @@ import { getServices } from '../features/servicesSlice';
 import { Carousel } from '@mantine/carousel';
 import { getBanners } from '../features/bannerSlice';
 import Layout from '../layouts/Layout';
-import DetailHide from '../components/DetailHide';
+import { Link } from 'react-router-dom';
+import Detail from '../components/Detail';
 
 const Dashboard = () => {
     const dispatch = useDispatch();
@@ -19,20 +20,22 @@ const Dashboard = () => {
 
     return (
         <Layout>
-            <DetailHide />
+            <Detail />
             <Grid mt={30}>
-                {dataSevices.map((service, index) => (
+                {dataSevices?.map((service, index) => (
                     <Grid.Col span={1} key={index}>
-                        <Image
-                            width={60}
-                            radius='md'
-                            src={service.service_icon}
-                            caption={
-                                <Text fz={9} fw={600} mt={10}>
-                                    {service.service_name}
-                                </Text>
-                            }
-                        />
+                        <Link style={{ textDecoration: 'none' }} to={`/transaksi/${service.service_code}`}>
+                            <Image
+                                width={60}
+                                radius='md'
+                                src={service.service_icon}
+                                caption={
+                                    <Text fz={9} fw={600} mt={10}>
+                                        {service.service_name}
+                                    </Text>
+                                }
+                            />
+                        </Link>
                     </Grid.Col>
                 ))}
             </Grid>
