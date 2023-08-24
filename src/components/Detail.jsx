@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import profilePhoto from '../assets/images/Profile Photo.png';
 import background from '../assets/images/Background Saldo.png';
 import { IconEye } from '@tabler/icons-react';
+import { useMediaQuery } from '@mantine/hooks';
 
 const Detail = () => {
     const [image, setImage] = useState(profilePhoto);
@@ -27,49 +28,98 @@ const Detail = () => {
         }
     }, [dataProfile]);
 
+    const matches = useMediaQuery('(min-width: 1024px)');
+
     return (
-        <Flex justify={'space-between'} maw='100%' align={'center'} mt={10}>
-            <div style={{ width: '30%' }}>
-                <Image src={image} alt='Profile' width={'42%'} />
-                <Text mt={10} fz={18} fw={400}>
-                    Selamat datang,
-                </Text>
-                <Text fz={25} fw={700}>
-                    {dataProfile.first_name} {dataProfile.last_name}
-                </Text>
-            </div>
-            <Box width='70%'>
-                <Card style={{ backgroundImage: `url("${background}")` }} h='155px' w='650px' pl={35} shadow='sm' radius='md'>
-                    <Text mt={10} color='white' fz={12}>
-                        Saldo anda
-                    </Text>
-                    <Text style={{ display: 'flex' }} mt={10} color='white' fz={25} fw={700} align='center'>
-                        Rp
-                        <input
-                            type={!dataProfile.hide ? 'password' : 'text'}
-                            disabled
-                            value={dataBalance.balance.toLocaleString('ID')}
-                            style={{
-                                fontWeight: '700',
-                                textDecoration: 'none',
-                                marginLeft: 10,
-                                border: 'none',
-                                background: 'transparent',
-                                color: 'white',
-                            }}
-                        />
-                    </Text>
-                    <Flex mt={18} align={'center'}>
-                        <Text color='white' fz={10} mr={5}>
-                            Lihat Saldo
+        <>
+            {matches ? (
+                <Flex justify={'space-between'} maw='100%' align={'center'} mt={10}>
+                    <div style={{ width: '30%' }}>
+                        <Image src={image} alt='Profile' width={'42%'} />
+                        <Text mt={10} fz={18} fw={400}>
+                            Selamat datang,
                         </Text>
-                        <ActionIcon variant='transparent' onClick={() => dispatch(cekSaldo())}>
-                            <IconEye size={14} color='white' />
-                        </ActionIcon>
-                    </Flex>
-                </Card>
-            </Box>
-        </Flex>
+                        <Text fz={25} fw={700}>
+                            {dataProfile.first_name} {dataProfile.last_name}
+                        </Text>
+                    </div>
+                    <Box width='70%'>
+                        <Card style={{ backgroundImage: `url("${background}")` }} h='155px' w='650px' pl={35} shadow='sm' radius='md'>
+                            <Text mt={10} color='white' fz={12}>
+                                Saldo anda
+                            </Text>
+                            <Text style={{ display: 'flex' }} mt={10} color='white' fz={25} fw={700} align='center'>
+                                Rp
+                                <input
+                                    type={!dataProfile.hide ? 'password' : 'text'}
+                                    disabled
+                                    value={dataBalance.balance.toLocaleString('ID')}
+                                    style={{
+                                        fontWeight: '700',
+                                        textDecoration: 'none',
+                                        marginLeft: 10,
+                                        border: 'none',
+                                        background: 'transparent',
+                                        color: 'white',
+                                    }}
+                                />
+                            </Text>
+                            <Flex mt={18} align={'center'}>
+                                <Text color='white' fz={10} mr={5}>
+                                    Lihat Saldo
+                                </Text>
+                                <ActionIcon variant='transparent' onClick={() => dispatch(cekSaldo())}>
+                                    <IconEye size={14} color='white' />
+                                </ActionIcon>
+                            </Flex>
+                        </Card>
+                    </Box>
+                </Flex>
+            ) : (
+                <>
+                    <div style={{ width: '100%' }}>
+                        <Image src={image} alt='Profile' width={'42%'} />
+                        <Text mt={10} fz={18} fw={400}>
+                            Selamat datang,
+                        </Text>
+                        <Text fz={25} fw={700}>
+                            {dataProfile.first_name} {dataProfile.last_name}
+                        </Text>
+                    </div>
+                    <Box mt={20}>
+                        <Card style={{ backgroundImage: `url("${background}")` }} ml={'auto'} w='90%' h='155px' pl={35} shadow='sm' radius='md'>
+                            <Text mt={10} color='white' fz={10}>
+                                Saldo anda
+                            </Text>
+                            <Text style={{ display: 'flex' }} mt={10} color='white' fz={25} fw={700} align='center'>
+                                Rp
+                                <input
+                                    type={!dataProfile.hide ? 'password' : 'text'}
+                                    disabled
+                                    value={dataBalance.balance.toLocaleString('ID')}
+                                    style={{
+                                        fontWeight: '700',
+                                        textDecoration: 'none',
+                                        marginLeft: 10,
+                                        border: 'none',
+                                        background: 'transparent',
+                                        color: 'white',
+                                    }}
+                                />
+                            </Text>
+                            <Flex mt={18} align={'center'}>
+                                <Text color='white' fz={10} mr={5}>
+                                    Lihat Saldo
+                                </Text>
+                                <ActionIcon variant='transparent' onClick={() => dispatch(cekSaldo())}>
+                                    <IconEye size={14} color='white' />
+                                </ActionIcon>
+                            </Flex>
+                        </Card>
+                    </Box>
+                </>
+            )}
+        </>
     );
 };
 
