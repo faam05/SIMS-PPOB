@@ -1,6 +1,8 @@
 import Dashboard from '../pages/Dashboard';
+import Login from '../pages/Login';
 import Pembayaran from '../pages/Pembayaran';
 import Profile from '../pages/Profile';
+import Register from '../pages/Register';
 import Topup from '../pages/Topup';
 import Transaksi from '../pages/Transaksi';
 
@@ -27,4 +29,15 @@ const PrivateRoutes = [
     },
 ];
 
-export { PrivateRoutes };
+const PublicRoutes = [
+    {
+        path: '/login',
+        element: <Login />,
+    },
+    {
+        path: '/registration',
+        element: <Register />,
+    },
+];
+
+export { PrivateRoutes, PublicRoutes };

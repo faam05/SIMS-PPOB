@@ -1,21 +1,31 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
-import { useEffect } from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Navigate, Outlet } from 'react-router-dom';
 
-const PublicRoutes = ({ children }) => {
-    const navigate = useNavigate();
+const PublicRoute = ({ children }) => {
+    const [auth, setAuth] = useState(false);
+
     useEffect(() => {
-        if (!localStorage.getItem('token'))
-            return (
-                <>
-                    {children}
-                    <Outlet />
-                </>
-            );
-        navigate('/dashboard');
+        if (localStorage.getItem('token')) {
+            setAuth(true);
+        } else {
+            setAuth(false);
+        }
     }, []);
+
+    if (auth == true) {
+        return <Navigate to={'/dashboard'} />;
+    } else if (auth == false) {
+        return (
+            <>
+                {children}
+                <Outlet />
+            </>
+        );
+    }
 };
 
-export default PublicRoutes;
+export default PublicRoute;

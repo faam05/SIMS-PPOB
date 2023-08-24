@@ -41,9 +41,9 @@ const Transaksi = () => {
             <Text fz={18} mt={50} fw={650}>
                 Semua Transaksi
             </Text>
-            <ScrollArea h={'100%'}>
+            <ScrollArea h={670}>
                 {dataTransaksi.transaksi?.map((transaksi, index) => (
-                    <Card my={30} key={index} shadow='sm' padding='md' radius='md' withBorder>
+                    <Card my={25} key={index} shadow='sm' padding='md' radius='md' withBorder>
                         <Group position='apart' mt='xs' mb='xs'>
                             {transaksi.transaction_type == 'TOPUP' ? (
                                 <Text color='green' fz={20} weight={700}>
