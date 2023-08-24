@@ -55,24 +55,24 @@ const Layout = ({ children }) => {
                             <Container size={'xl'}>
                                 <Flex>
                                     <Link style={{ display: 'flex', textDecoration: 'none' }} to='/dashboard' align={'center'}>
-                                        <Image mx={7} src={logo} alt='Logo' width={20} />
+                                        <Image mx={3} src={logo} alt='Logo' width={20} />
                                         <Text fz={12} fw={600} color='black'>
                                             SIMS PPOB
                                         </Text>
                                     </Link>
                                     <Flex ml={'auto'}>
                                         <Link to='/topup' style={{ textDecoration: 'none' }}>
-                                            <Text fz={12} fw={600} mx={20} color={location.pathname == '/topup' ? 'red' : 'black'}>
+                                            <Text fz={12} fw={600} mx={5} color={location.pathname == '/topup' ? 'red' : 'black'}>
                                                 Top Up
                                             </Text>
                                         </Link>
                                         <Link to='/transaksi' style={{ textDecoration: 'none' }}>
-                                            <Text fz={12} fw={600} mx={20} color={location.pathname == '/transaksi' ? 'red' : 'black'}>
+                                            <Text fz={12} fw={600} mx={5} color={location.pathname == '/transaksi' ? 'red' : 'black'}>
                                                 Transaction
                                             </Text>
                                         </Link>
                                         <Link to='/profile' style={{ textDecoration: 'none' }}>
-                                            <Text fz={12} fw={600} mx={20} color={location.pathname == '/profile' ? 'red' : 'black'}>
+                                            <Text fz={12} fw={600} mx={5} color={location.pathname == '/profile' ? 'red' : 'black'}>
                                                 Akun
                                             </Text>
                                         </Link>
