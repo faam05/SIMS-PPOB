@@ -16,9 +16,9 @@ const LandingPage = ({ children }) => {
                     </div>
                 </Flex>
             ) : (
-                <Flex style={{ maxWidth: 768 }} justify={'center'}>
-                    <Image maw={'768px'} src={logo} alt='Login Ilustration' />
-                    <Card style={{ position: 'absolute', backgroundColor: 'rgba(255, 255, 255, 0.7)', color: 'rgba(255, 255, 255, 0.7)' }} my={80}>
+                <Flex justify={'center'} align={'center'} style={{ minHeight: '100vh' }}>
+                    <Image fit='cover' height={'100vh'} src={logo} alt='Login Ilustration' />
+                    <Card style={{ position: 'absolute', backgroundColor: 'rgba(255, 255, 255, 0.7)', color: 'rgba(255, 255, 255, 0.7)' }}>
                         {children}
                     </Card>
                 </Flex>
