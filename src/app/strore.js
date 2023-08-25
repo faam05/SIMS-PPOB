@@ -11,7 +11,7 @@ const store = configureStore({
         services: servicesReducer,
         banners: bannerReducer,
     },
-    // devTools: false,
+    devTools: false,
 });
 
 export default store;
