@@ -1,4 +1,4 @@
-import { ActionIcon, Box, Card, Flex, Image, Text } from '@mantine/core';
+import { ActionIcon, Avatar, Box, Card, Flex, Text } from '@mantine/core';
 import { useEffect, useState } from 'react';
 import { cekSaldo, getProfile } from '../features/profileSlice';
 import { getBalance } from '../features/balanceSlice';
@@ -35,7 +35,7 @@ const Detail = () => {
             {matches ? (
                 <Flex justify={'space-between'} maw='100%' align={'center'} mt={10}>
                     <div style={{ width: '30%' }}>
-                        <Image src={image} alt='Profile' width={'42%'} />
+                        <Avatar radius={'lg'} src={image} alt='Profile' size={'lg'} width={'42%'} />
                         <Text mt={10} fz={18} fw={400}>
                             Selamat datang,
                         </Text>
@@ -78,11 +78,11 @@ const Detail = () => {
             ) : (
                 <>
                     <div style={{ width: '100%' }}>
-                        <Image src={image} alt='Profile' width={'42%'} />
-                        <Text mt={10} fz={18} fw={400}>
+                        <Avatar radius={'lg'} src={image} alt='Profile' size={'lg'} width={'42%'} />
+                        <Text mt={10} fz={16} fw={400}>
                             Selamat datang,
                         </Text>
-                        <Text fz={25} fw={700}>
+                        <Text fz={20} fw={700}>
                             {dataProfile.first_name} {dataProfile.last_name}
                         </Text>
                     </div>
@@ -107,7 +107,7 @@ const Detail = () => {
                                     }}
                                 />
                             </Text>
-                            <Flex mt={18} align={'center'}>
+                            <Flex mt={22} align={'center'}>
                                 <Text color='white' fz={10} mr={5}>
                                     Lihat Saldo
                                 </Text>

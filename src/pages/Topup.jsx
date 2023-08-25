@@ -190,38 +190,38 @@ const Topup = () => {
                         Nominal Top Up
                     </Text>
                     <Box mt={30}>
-                        <Grid gutter={'lg'}>
-                            <Grid.Col span='auto' xs={1} sm={2} orderMd={2} md={2}>
+                        <Grid gutterMd={'lg'} gutterXs='md'>
+                            <Grid.Col span={6} sm={2} orderMd={2} md={2}>
                                 <Button w={103} variant='default' onClick={() => setValue(10000)}>
                                     Rp10.000
                                 </Button>
                             </Grid.Col>
-                            <Grid.Col span='auto' xs={1} sm={2} orderMd={3} md={2}>
+                            <Grid.Col span={6} sm={2} orderMd={3} md={2}>
                                 <Button w={103} variant='default' onClick={() => setValue(20000)}>
                                     Rp20.000
                                 </Button>
                             </Grid.Col>
-                            <Grid.Col span='auto' xs={1} sm={2} orderMd={4} md={2}>
+                            <Grid.Col span={6} sm={2} orderMd={4} md={2}>
                                 <Button w={103} variant='default' onClick={() => setValue(50000)}>
                                     Rp50.000
                                 </Button>
                             </Grid.Col>
-                            <Grid.Col span='auto' xs={1} sm={2} orderMd={6} md={2}>
+                            <Grid.Col span={6} sm={2} orderMd={6} md={2}>
                                 <Button variant='default' onClick={() => setValue(100000)}>
                                     Rp100.000
                                 </Button>
                             </Grid.Col>
-                            <Grid.Col span='auto' xs={1} sm={2} orderMd={7} md={2}>
+                            <Grid.Col span={6} sm={2} orderMd={7} md={2}>
                                 <Button variant='default' onClick={() => setValue(250000)}>
                                     Rp250.000
                                 </Button>
                             </Grid.Col>
-                            <Grid.Col span='auto' xs={1} sm={2} orderMd={8} md={2}>
+                            <Grid.Col span={6} sm={2} orderMd={8} md={2}>
                                 <Button variant='default' onClick={() => setValue(500000)}>
                                     Rp500.000
                                 </Button>
                             </Grid.Col>
-                            <Grid.Col span='auto' xs={12} sm={12} orderMd={1} md={6}>
+                            <Grid.Col span={12} sm={12} orderMd={1} md={6}>
                                 <NumberInput
                                     value={value}
                                     thousandsSeparator='.'
@@ -235,7 +235,7 @@ const Topup = () => {
                                     }
                                 />
                             </Grid.Col>
-                            <Grid.Col span='auto' xs={12} sm={12} orderMd={5} md={6}>
+                            <Grid.Col span={12} sm={12} orderMd={5} md={6}>
                                 <Button
                                     color='red'
                                     fullWidth

@@ -2,23 +2,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from 'react';
-import { Navigate, Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
+import withPublic from '../utils/withPublic';
 
-const PublicRoute = ({ children }) => {
-    const [auth, setAuth] = useState(false);
+const PublicRoute = (props, { children }) => {
+    const { auth } = props;
+    const navigate = useNavigate();
 
-    useEffect(() => {
-        if (localStorage.getItem('token')) {
-            setAuth(true);
-        } else {
-            setAuth(false);
-        }
-    }, []);
-
-    if (auth == true) {
-        return <Navigate to={'/dashboard'} />;
-    } else if (auth == false) {
+    if (auth == false) {
+        localStorage.removeItem('token');
         return (
             <>
                 {children}
@@ -26,6 +18,9 @@ const PublicRoute = ({ children }) => {
             </>
         );
     }
+    if (auth == true) {
+        navigate('/dashboard');
+    }
 };
 
-export default PublicRoute;
+export default withPublic(PublicRoute);

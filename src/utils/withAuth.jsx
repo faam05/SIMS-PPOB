@@ -7,19 +7,23 @@ const withAuth = (OriginalComponent) => {
     return (props) => {
         const [auth, setAuth] = useState(null);
         const getAuth = async () => {
-            try {
-                const data = await axios.get('https://take-home-test-api.nutech-integrasi.app/profile', {
-                    headers: {
-                        Authorization: `Bearer ${localStorage.getItem('token')}`,
-                    },
-                });
-                if (data.status == 200) {
-                    setAuth(true);
+            if (localStorage.getItem('token') != null) {
+                try {
+                    const data = await axios.get('https://take-home-test-api.nutech-integrasi.app/profile', {
+                        headers: {
+                            Authorization: `Bearer ${localStorage.getItem('token')}`,
+                        },
+                    });
+                    if (data.status == 200) {
+                        setAuth(true);
+                    }
+                } catch (error) {
+                    if (error) {
+                        setAuth(false);
+                    }
                 }
-            } catch (error) {
-                if (error) {
-                    setAuth(false);
-                }
+            } else {
+                setAuth(false);
             }
         };
 

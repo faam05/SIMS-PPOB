@@ -95,35 +95,31 @@ const Register = () => {
                         membuat akun
                     </Title>
                     <form onSubmit={form.onSubmit((values) => handleSubmit(values))}>
-                        <TextInput size='xs' iconWidth={15} icon={<IconAt />} placeholder='masukan email anda' {...form.getInputProps('email')} />
+                        <TextInput size='xs' icon={<IconAt size='0.8rem' />} placeholder='masukan email anda' {...form.getInputProps('email')} />
                         <TextInput
                             size='xs'
-                            iconWidth={15}
-                            icon={<IconUser />}
+                            icon={<IconUser size='0.8rem' />}
                             mt='sm'
                             placeholder='nama depan'
                             {...form.getInputProps('first_name')}
                         />
                         <TextInput
                             size='xs'
-                            iconWidth={15}
-                            icon={<IconUser />}
+                            icon={<IconUser size='0.8rem' />}
                             mt='sm'
                             placeholder='nama belakang'
                             {...form.getInputProps('last_name')}
                         />
                         <PasswordInput
                             size='xs'
-                            iconWidth={15}
-                            icon={<IconLock />}
+                            icon={<IconLock size='0.8rem' />}
                             mt='sm'
                             placeholder='buat password'
                             {...form.getInputProps('password')}
                         />
                         <PasswordInput
                             size='xs'
-                            iconWidth={15}
-                            icon={<IconLock />}
+                            icon={<IconLock size='0.8rem' />}
                             mt='sm'
                             placeholder='konfirmasi password'
                             {...form.getInputProps('konfirmasiPassword')}

@@ -82,13 +82,12 @@ const Login = () => {
                         untuk memulai
                     </Title>
                     <form onSubmit={form.onSubmit((values) => handleSubmit(values))}>
-                        <TextInput size='xs' iconWidth={15} icon={<IconAt />} placeholder='masukan email anda' {...form.getInputProps('email')} />
+                        <TextInput size='xs' icon={<IconAt size='0.8rem' />} placeholder='masukan email' {...form.getInputProps('email')} />
                         <PasswordInput
                             size='xs'
-                            iconWidth={15}
-                            icon={<IconLock />}
+                            icon={<IconLock size='0.8rem' />}
                             mt='sm'
-                            placeholder='masukan password anda'
+                            placeholder='masukan password'
                             {...form.getInputProps('password')}
                         />
                         <Button size='xs' fullWidth type='submit' color='red' mt={30} disabled={loading ? true : false}>
