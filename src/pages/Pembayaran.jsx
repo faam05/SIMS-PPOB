@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getServices } from '../features/servicesSlice';
 import { useParams } from 'react-router-dom';
-import { saveTransaksi } from '../features/balanceSlice';
+import { saveTransaksi } from '../features/transaksiSlice';
 import { notifications } from '@mantine/notifications';
 import Detail from '../components/Detail';
 

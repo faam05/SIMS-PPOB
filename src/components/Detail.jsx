@@ -43,7 +43,7 @@ const Detail = () => {
                             {dataProfile.first_name} {dataProfile.last_name}
                         </Text>
                     </div>
-                    <Box width='70%'>
+                    <Box>
                         <Card style={{ backgroundImage: `url("${background}")` }} h='155px' w='650px' pl={35} shadow='sm' radius='md'>
                             <Text mt={10} color='white' fz={12}>
                                 Saldo anda
@@ -53,7 +53,7 @@ const Detail = () => {
                                 <input
                                     type={!dataProfile.hide ? 'password' : 'text'}
                                     disabled
-                                    value={dataBalance.balance.toLocaleString('ID')}
+                                    value={!dataProfile.hide ? 'xxxxxxx' : dataBalance.balance.toLocaleString('ID')}
                                     style={{
                                         fontWeight: '700',
                                         textDecoration: 'none',
@@ -87,7 +87,7 @@ const Detail = () => {
                         </Text>
                     </div>
                     <Box mt={20}>
-                        <Card style={{ backgroundImage: `url("${background}")` }} ml={'auto'} w='90%' h='155px' pl={35} shadow='sm' radius='md'>
+                        <Card style={{ backgroundImage: `url("${background}")` }} ml={'auto'} w='70%' h='155px' pl={35} shadow='sm' radius='md'>
                             <Text mt={10} color='white' fz={10}>
                                 Saldo anda
                             </Text>
@@ -96,7 +96,7 @@ const Detail = () => {
                                 <input
                                     type={!dataProfile.hide ? 'password' : 'text'}
                                     disabled
-                                    value={dataBalance.balance.toLocaleString('ID')}
+                                    value={!dataProfile.hide ? 'xxxxxxx' : dataBalance.balance.toLocaleString('ID')}
                                     style={{
                                         fontWeight: '700',
                                         textDecoration: 'none',

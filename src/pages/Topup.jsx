@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Box, Button, Center, Grid, Image, Modal, NumberInput, Text } from '@mantine/core';
 import Layout from '../layouts/Layout';
 import { IconDialpad } from '@tabler/icons-react';
@@ -23,10 +24,7 @@ const Topup = () => {
         dispatch(getBalance());
     }, [dispatch]);
 
-    const handleTopup = async () => {
-        close();
-        setLoading(true);
-        await dispatch(addBalance(value));
+    useEffect(() => {
         if (dataBalance.status == 'failed') {
             notifications.show({
                 title: `Gagal!`,
@@ -45,6 +43,13 @@ const Topup = () => {
                 position: 'top-center',
             });
         }
+    }, [dataBalance]);
+
+    const handleTopup = async () => {
+        close();
+        setLoading(true);
+        await dispatch(addBalance(value));
+
         setLoading(false);
         setValue('');
     };
